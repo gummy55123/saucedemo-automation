@@ -24,5 +24,12 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
-      - name: 執行 pytest
-        run: pytest -v
+      - name: 執行 pytest 並產生 HTML 報告
+        run: pytest test_saucedemo.py -v --html=report.html --self-contained-html
+
+      - name: 上傳測試報告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report
+          path: report.html
