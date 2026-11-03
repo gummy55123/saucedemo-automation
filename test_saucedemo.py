@@ -1,12 +1,14 @@
 from playwright.sync_api import sync_playwright, expect
 import pytest
+import os
 
 BASE_URL = "https://www.saucedemo.com/"
 
 @pytest.fixture
 def page():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless = False)
+        headless  = os.getenv("CI") == "true"
+        browser = p.chromium.launch(headless = headless)
         page = browser.new_page()
         page.goto(BASE_URL)
 
