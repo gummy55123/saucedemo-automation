@@ -1,0 +1,28 @@
+name: Python Automation Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 取得專案程式碼
+        uses: actions/checkout@v4
+
+      - name: 設定 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 安裝套件
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: 執行 pytest
+        run: pytest -v
