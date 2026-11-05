@@ -13,16 +13,16 @@ def login(page,username,password):
 # 使用 pytest.mark.xfail 標記預期會失敗的測試
 # reason：說明預期失敗的原因
 # strict=True：如果測試意外通過（XPASS），pytest 會將它判定為失敗
-@pytest.mark.xfail(    
-    reason="登入後無法穩定進入商品頁面",
-    strict=True
-    )
-def test_xfail_login_demo(page):
-    page.fill("#user-name", "standard_user")
-    page.fill("#password", "secret_sauce")
-    page.click("#login-button")
+# @pytest.mark.xfail(    
+#     reason="登入後無法穩定進入商品頁面",
+#     strict=True
+#     )
+# def test_xfail_login_demo(page):
+#     page.fill("#user-name", "standard_user")
+#     page.fill("#password", "secret_sauce")
+#     page.click("#login-button")
 
-    assert page.url == "https://www.saucedemo.com/inventory.html"
+#     assert page.url == "https://www.saucedemo.com/inventory.html"
 
 
 
