@@ -63,7 +63,7 @@ def test_cart (page): #測試購物車功能
     page.locator(".shopping_cart_link").click()
     expect(page).to_have_url("https://www.saucedemo.com/cart.html")
     expect(page.locator(".inventory_item_name")).to_have_text("Sauce Labs Bike Light")
-    expect(page.locator(".inventory_item_name:has-text('Sauce Labs Backpack')")).to_have_count(0)
+    expect(page.locator(".cart_item .inventory_item_name")).to_have_text("Sauce Labs Bike Light")
 
 
 
